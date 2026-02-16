@@ -1,0 +1,83 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input,
+textarea,select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#buttonm {
+    padding: 10px;
+    background-color: #769FCD;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#buttonm:hover {
+    background-color: #3F72AF;
+}
+
+.content {
+    width: 1200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #F7FBFC;
+    border: 2px solid #D6E6F2;
+    border-radius: 10px;
+    text-align: right;
+}
+.content2{
+    position: relative;
+    background-color: #D6E6F2;
+    border: 2px solid #D6E6F2;
+    border-radius: 10px;
+    padding: 0px 30px 0px 0px;
+    margin-bottom: 10px;
+
+}
+form{
+    width: 400px;
+    align-content: center;
+    padding-left: 400px;
+}
+input{
+    padding: 8px 18px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.content-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.corner-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 100px; /* عرض حداکثری تصویر را مشخص کنید */
+    max-height: 100px; /* ارتفاع حداکثری تصویر را مشخص کنید */
+    border-radius: 10px;
+}
+.co1 , .co2{
+    margin-right: 80px;
+}
+ul {
+    direction: rtl;
+    text-align: right; /* این نیز میتواند بهترین گزینه باشد */
+}
+b{
+    margin-right: 80px;
+}

@@ -1,0 +1,122 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4F79AA;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #e6e6ff;
+}
+
+tr:nth-child(odd) {
+    background-color: #e6e6ff;
+}
+tbody tr:hover {
+    background-color: #769FCD;
+    color: white;
+}
+#we{
+    padding-left: 10px;
+}
+/*menu*/
+body {
+    /*font-family: 'IranSans', Arial, sans-serif;*/
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #F7FBFC;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    display: flex; /* اضافه شده */
+    align-items: center;
+}
+.header1{
+}
+.header2{
+    background-color: #D6E6F2;
+}
+nav.nav1{
+    padding-left:400px;
+}
+nav.nav2{
+    padding-left:400px;
+}
+nav a {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 15px;
+
+}
+
+nav a:hover{
+    background-color:#4F79AA ;
+    color: white;
+
+}
+button {
+    width: 200px;
+    padding: 8px 10px; /* پدینگ دکمه */
+    margin-left: 10px;
+    font-size: 16px; /* اندازه متن */
+    border: none; /* حذف حاشیه */
+    border-radius: 5px; /* گوشه‌های گرد دکمه */
+    background-color: #769FCD; /* رنگ پس زمینه دکمه */
+    color: #fff; /* رنگ متن دکمه */
+    cursor: pointer; /* نشانگر ماوس به دست دکمه تبدیل شود */
+    transition: background-color 0.3s ease; /* انیمیشن تغییر رنگ پس زمینه */
+}
+/*content*/
+.content {
+    width: 1200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #F7FBFC;
+    border: 2px solid #D6E6F2;
+    border-radius: 10px;
+    text-align: right;
+}
+.content2{
+    background-color: #D6E6F2;
+    border: 2px solid #D6E6F2;
+    border-radius: 10px;
+    padding: 0px 30px 0px 0px;
+    margin-bottom: 10px;
+}
+.content2:hover{
+    background-color: #769FCD;
+}
+
+.main-img{
+    /*background-size: cover; !* یا contain بسته به ترجیح شما *!*/
+
+    width: 80%;
+    height: 480px;
+    display: block; /* حذف فضای اضافی زیر تصویر (اگر به عنوان بلاک استفاده شود) */
+    margin: auto; /* تصویر در وسط افقی قرار گیرد */
+}
+

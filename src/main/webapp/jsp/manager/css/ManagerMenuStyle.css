@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #769FCD;
+    color: white;
+    padding: 2px;
+    text-align: center;
+    width: 100%;
+    display: flex; /* اضافه شده */
+    align-items: center;
+}
+nav{
+    padding-left:360px;
+}
+nav a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 15px;
+
+}
+
+nav a:hover{
+    background-color:#4F79AA ;
+
+}
+img{
+    width:40px; /* اندازه تصویر */
+    height: auto; /* حفظ نسبت ابعاد تصویر */
+    margin-right:auto; /* فاصله از سمت راست هدر */
+    margin-left: 10px;
+}
+/*content*/
