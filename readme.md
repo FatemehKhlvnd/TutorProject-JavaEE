@@ -1,69 +1,130 @@
-tutor System
+```md
+# Tutor Management System (Java EE)
 
-    - Under Development
+A Maven-based Java EE web application for managing tutoring services with role-based access control.
 
-    - Requirement :
-        
-        - Oracle database
-        - install OpenJDK 11
+The system supports three user roles: **Manager**, **Teacher**, and **Student**, with authentication handled through Apache TomEE DataSourceRealm and an Oracle database backend.
 
-- make a root directory in drive C
-- download apache-tomee-webprofile-9.1.2 
-- put the tomEE file in the root directory
-- copy ojdbc11 driver in webapp/WEB-INF/lib @ {tomee_dir}/lib
+---
 
-  - setup resource in {tomee_dir}/conf/tomee.xml (jta)
+## 🚀 Features
 
-          <Resource id = "jdbc/JtaDataSource" type = "javax.sql.DataSource">
-          jdbcDriver = oracle.jdbc.driver.OracleDriver
-          jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-          username = javaee
-          password = java123
-          jtaManaged = true
-          maxIdle = 20
-          minIdle = 5
-          maxWait = 10000
-          </Resource>
-          <Resource id = "jdbc/NonJtaDataSource" type = "javax.sql.DataSource">
-          jdbcDriver = oracle.jdbc.driver.OracleDriver
-          jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
-          username = javaee
-          password = java123
-          jtaManaged = false
-          maxIdle = 20
-          minIdle = 5
-          maxWait = 10000
-          </Resource>
-    - setup realm in {tomee_dir}/conf/server.xml
+- Role-based authentication (Manager / Teacher / Student)
+- Manager can create new users for each role
+- User-role mapping stored in `user_mapping_tbl`
+- Database-backed authentication using TomEE Realm
+- Maven project structure
 
-          <Realm className="org.apache.catalina.realm.DataSourceRealm"
-           dataSourceName="jdbc/JtaDataSource"
-           userTable="studentEntity"
-           userNameCol="u_username"
-           userCredCol="u_password"
-            userRoleTable="user_mapping_tbl"
-              roleNameCol="role"/>
-              <Realm className="org.apache.catalina.realm.DataSourceRealm"
-            dataSourceName="jdbc/JtaDataSource"
-            userTable="teacherEntity"
-             userNameCol="u_username"
-             userCredCol="u_password"
-            userRoleTable="user_mapping_tbl"
-            roleNameCol="role"/>
+---
 
-             <Realm className="org.apache.catalina.realm.DataSourceRealm"
-             dataSourceName="jdbc/JtaDataSource"
-             userTable="managerEntity"
-             userNameCol="u_username"
-             userCredCol="u_password"
-             userRoleTable="user_mapping_tbl"
-             roleNameCol="role"/>  
+## 🛠 Tech Stack
 
-- UserMapping is a class with a table that save username and role of each user and I use it to login with realm
+- Java EE (JSP / Servlets)
+- Maven
+- Oracle Database (XE)
+- Apache TomEE Web Profile 9.1.2
+- OpenJDK 11
 
-- There are three different types of clients in this system
-  - Manager
-  - Teacher
-  - Student
+---
 
-- when you log in az manager you can make new client for each role
+## 📦 Requirements
+
+- OpenJDK 11
+- Oracle Database (XE)
+- Apache TomEE Web Profile 9.1.2
+- Oracle JDBC Driver (`ojdbc11.jar`)
+
+---
+
+## ⚙️ Setup
+
+### 1) Add JDBC Driver
+
+Copy `ojdbc11.jar` into:
+
+```
+
+{tomee_dir}/lib
+src/main/webapp/WEB-INF/lib
+
+```
+
+---
+
+### 2) Configure DataSource
+
+Edit:
+
+```
+
+{tomee_dir}/conf/tomee.xml
+
+````
+
+Add:
+
+```xml
+<Resource id="jdbc/JtaDataSource" type="javax.sql.DataSource">
+  jdbcDriver = oracle.jdbc.driver.OracleDriver
+  jdbcUrl = jdbc:oracle:thin:@localhost:1521:xe
+  username = <your_db_username>
+  password = <your_db_password>
+  jtaManaged = true
+</Resource>
+````
+
+---
+
+### 3) Configure Realm
+
+Edit:
+
+```
+{tomee_dir}/conf/server.xml
+```
+
+Add:
+
+```xml
+<Realm className="org.apache.catalina.realm.DataSourceRealm"
+  dataSourceName="jdbc/JtaDataSource"
+  userTable="studentEntity"
+  userNameCol="u_username"
+  userCredCol="u_password"
+  userRoleTable="user_mapping_tbl"
+  roleNameCol="role"/>
+```
+
+(Repeat for `teacherEntity` and `managerEntity` if needed.)
+
+---
+
+## 👥 User Roles
+
+* **Manager**
+
+  * Can create new users for each role
+
+* **Teacher**
+
+  * Access teacher-related features
+
+* **Student**
+
+  * Access student-related features
+
+---
+
+## 📝 Notes
+
+* This project is for educational purposes.
+* The `user_mapping_tbl` table stores user-role mappings for authentication.
+
+---
+
+## 👩‍💻 Author
+
+Fatemeh Khalvandi
+
+```
+```
