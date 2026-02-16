@@ -1,67 +1,32 @@
-```md
 # Tutor Management System (Java EE)
 
-A Maven-based Java EE web application for managing tutoring services with role-based access control.
+Java EE (Maven) web application for managing a tutoring system with three roles: Manager, Teacher, and Student.
+Authentication is configured using Apache TomEE `DataSourceRealm` with an Oracle XE database.
 
-The system supports three user roles: **Manager**, **Teacher**, and **Student**, with authentication handled through Apache TomEE DataSourceRealm and an Oracle database backend.
+## What it does
+- Login for three roles: Manager / Teacher / Student
+- Manager can create users for each role
+- Roles are stored in `user_mapping_tbl` and used by TomEE Realm during authentication
 
----
-
-## 🚀 Features
-
-- Role-based authentication (Manager / Teacher / Student)
-- Manager can create new users for each role
-- User-role mapping stored in `user_mapping_tbl`
-- Database-backed authentication using TomEE Realm
-- Maven project structure
-
----
-
-## 🛠 Tech Stack
-
+## Tech
 - Java EE (JSP / Servlets)
 - Maven
 - Oracle Database (XE)
 - Apache TomEE Web Profile 9.1.2
 - OpenJDK 11
 
----
-
-## 📦 Requirements
-
+## Prerequisites
 - OpenJDK 11
-- Oracle Database (XE)
+- Oracle XE
 - Apache TomEE Web Profile 9.1.2
-- Oracle JDBC Driver (`ojdbc11.jar`)
+- Oracle JDBC driver (`ojdbc11.jar`)
 
----
+## Setup (TomEE + Oracle)
+1) Copy `ojdbc11.jar` to:
+   - `{tomee_dir}/lib`
+   - `src/main/webapp/WEB-INF/lib`
 
-## ⚙️ Setup
-
-### 1) Add JDBC Driver
-
-Copy `ojdbc11.jar` into:
-
-```
-
-{tomee_dir}/lib
-src/main/webapp/WEB-INF/lib
-
-```
-
----
-
-### 2) Configure DataSource
-
-Edit:
-
-```
-
-{tomee_dir}/conf/tomee.xml
-
-````
-
-Add:
+2) Configure datasource in `{tomee_dir}/conf/tomee.xml`:
 
 ```xml
 <Resource id="jdbc/JtaDataSource" type="javax.sql.DataSource">
@@ -71,21 +36,8 @@ Add:
   password = <your_db_password>
   jtaManaged = true
 </Resource>
-````
+Configure realm in {tomee_dir}/conf/server.xml (example for Student):
 
----
-
-### 3) Configure Realm
-
-Edit:
-
-```
-{tomee_dir}/conf/server.xml
-```
-
-Add:
-
-```xml
 <Realm className="org.apache.catalina.realm.DataSourceRealm"
   dataSourceName="jdbc/JtaDataSource"
   userTable="studentEntity"
@@ -93,38 +45,5 @@ Add:
   userCredCol="u_password"
   userRoleTable="user_mapping_tbl"
   roleNameCol="role"/>
-```
+Repeat for teacherEntity and managerEntity if you use separate tables per role.
 
-(Repeat for `teacherEntity` and `managerEntity` if needed.)
-
----
-
-## 👥 User Roles
-
-* **Manager**
-
-  * Can create new users for each role
-
-* **Teacher**
-
-  * Access teacher-related features
-
-* **Student**
-
-  * Access student-related features
-
----
-
-## 📝 Notes
-
-* This project is for educational purposes.
-* The `user_mapping_tbl` table stores user-role mappings for authentication.
-
----
-
-## 👩‍💻 Author
-
-Fatemeh Khalvandi
-
-```
-```
